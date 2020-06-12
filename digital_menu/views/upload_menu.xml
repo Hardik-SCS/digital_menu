@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+    <record model="ir.ui.view" id="upload_menu_form_view">
+        <field name="name">upload.menu.form.view</field>
+        <field name="model">upload.menu</field>
+        <field name="arch" type="xml">
+        	<form string="Upload Menu">
+        		<group>
+        			<group>
+			            <field name='hotel_name'/>
+			            <field name='hotel_number'/>
+			            <field name="hotel_menu" filename="filename" required='1'/>
+			            <field name="filename" invisible='True'/>
+			        </group>
+		        </group>
+	 		</form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="upload_menu_tree_view">
+        <field name="name">upload.menu.tree.view</field>
+        <field name="model">upload.menu</field>
+        <field name="arch" type="xml">
+        	<tree string="Upload Menu">
+	            <field name='hotel_name'/>
+	            <field name="hotel_menu" filename="filename" invisible='True'/>
+		        <field name="filename"/>
+		       	<field name='hotel_number'/>
+	 		</tree>
+        </field>
+    </record>
+    <!--  Upload Menu Action-->
+
+	<record id="upload_menu_actions" model="ir.actions.act_window">
+		<field name="name">Upload Menu</field>
+		<field name="res_model">upload.menu</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!--Upload Menu menuitem start-->
+	<menuitem id="main_upload_menu_by_serpentcs" name="Upload Menu" sequence="1"/>
+	<menuitem id="main_menu" 
+			name="Upload Menu" 
+			parent="main_upload_menu_by_serpentcs" 
+			action="upload_menu_actions"
+			sequence ="1"/>
+</odoo>
